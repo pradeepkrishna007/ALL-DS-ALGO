@@ -2,17 +2,17 @@ package com.priya.CrackingTheCodingInterview;
 
 public class StringPermutationMaker {
 
-	private static void permutationmaker(String string, String prifix) {
-		if (string.length() == 0) {
-			System.out.println("'" + prifix + "'");
+	private static void permutationmaker(String input, String result) {
+		if (input == "" || input.isEmpty()) {
+			System.out.println(result);
 		} else {
-			for (int i = 0; i < string.length(); i++) {
-				String rem = string.substring(0, i) + string.substring(i + 1);
-				System.out.println(" rem = " + string.substring(0, i) + " ** " + string.substring(i + 1) + " *** " + i);
-				System.out.println(rem + " -- " + prifix + "+" + string.charAt(i));
-				System.out.println("----------------------" + string);
-				permutationmaker(rem, prifix + string.charAt(i));
-
+			/**
+			 * Remove one charecter from string and rest as reminder. Add the
+			 * selected value and result. You will get the ans
+			 **/
+			for (int i = 0; i < input.length(); i++) {
+				String reminder = input.substring(0, i) + input.substring(i + 1);
+				permute(reminder.trim(), result + input.charAt(i));
 			}
 
 		}
